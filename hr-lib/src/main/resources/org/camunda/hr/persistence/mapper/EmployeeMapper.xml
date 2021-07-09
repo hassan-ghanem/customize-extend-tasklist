@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="org.camunda.hr.persistence.mapper.EmployeeMapper">
+
+	<resultMap id="EmployeeResultMap"
+		type="org.camunda.hr.persistence.entity.Employee">
+		<id column="employee_number" jdbcType="VARCHAR"
+			property="employeeNumber" />
+		<result column="employee_name" jdbcType="VARCHAR"
+			property="employeeName" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+	</resultMap>
+
+	<select id="selectByUserId" parameterType="java.lang.String"
+		resultMap="EmployeeResultMap">
+		SELECT *
+		FROM employee
+		WHERE user_id = #{userId}
+	</select>
+
+</mapper>
